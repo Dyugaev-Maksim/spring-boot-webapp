@@ -1,9 +1,9 @@
 package com.veagud.springbootwebapptableuser.dao;
 
+import com.veagud.springbootwebapptableuser.model.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
-import com.veagud.springbootwebapptableuser.model.User;
 
 import java.util.List;
 
@@ -41,9 +41,6 @@ public class UserDaoImp implements UserDao {
     @Override
     public void deleteUser(long id) {
         User user = getUserById(id);
-        if (null == user) {
-            throw new NullPointerException("User not found");
-        }
         entityManager.remove(user);
     }
 }

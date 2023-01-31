@@ -1,13 +1,13 @@
 package com.veagud.springbootwebapptableuser.controller;
 
 
+import com.veagud.springbootwebapptableuser.model.User;
+import com.veagud.springbootwebapptableuser.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import com.veagud.springbootwebapptableuser.model.User;
-import com.veagud.springbootwebapptableuser.service.UserService;
 
 
 @Controller
@@ -32,7 +32,7 @@ public class UserController {
     public String showUserById(@PathVariable("id") long id, Model model) {
         model.addAttribute("something", "One User table");
         model.addAttribute("user", userService.showUserById(id));
-        return "one user";
+        return "oneuser";
     }
 
     @GetMapping("/new")
@@ -50,7 +50,7 @@ public class UserController {
     }
 
     @GetMapping("/{id}/edit")
-    public String getPageToUpd (Model model, @PathVariable("id") int id) {
+    public String getPageToUpd(Model model, @PathVariable("id") int id) {
         model.addAttribute("user", userService.showUserById(id));
         return "edit";
     }

@@ -1,10 +1,10 @@
 package com.veagud.springbootwebapptableuser.service;
 
+import com.veagud.springbootwebapptableuser.dao.UserDao;
+import com.veagud.springbootwebapptableuser.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.veagud.springbootwebapptableuser.dao.UserDao;
-import com.veagud.springbootwebapptableuser.model.User;
 
 import java.util.List;
 
@@ -29,6 +29,7 @@ public class UserServiceImp implements UserService {
         userDao.updateUser(user);
     }
 
+
     @Transactional
     @Override
     public void saveUser(User user) {
@@ -43,6 +44,10 @@ public class UserServiceImp implements UserService {
     @Transactional
     @Override
     public void deleteUser(long id) {
+        User user = userDao.getUserById(id);
+        if (null == user) {
+            throw new NullPointerException("User not found");
+        }
         userDao.deleteUser(id);
     }
 }
