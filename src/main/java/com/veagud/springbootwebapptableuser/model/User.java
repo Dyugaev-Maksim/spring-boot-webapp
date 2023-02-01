@@ -29,10 +29,8 @@ public class User {
     @Min(value = 8, message = "User must be at least 8 years old.")
     @Max(value = 120, message = "User must be under 120 years.")
     @Column
-    private int age;
+    private long age;
 
-    @Column
-    private long numberPhone;
 
     @Column
     private long passport;
@@ -40,13 +38,12 @@ public class User {
     public User() {
     }
 
-    public User(long id, String name, String surname, String email, int age, long numberPhone, long passport) {
+    public User(long id, String name, String surname, String email, long age, long passport) {
         this.id = id;
         this.name = name;
         this.surname = surname;
         this.email = email;
         this.age = age;
-        this.numberPhone = numberPhone;
         this.passport = passport;
     }
 
@@ -86,21 +83,14 @@ public class User {
         this.email = email;
     }
 
-    public int getAge() {
+    public long getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(long age) {
         this.age = age;
     }
 
-    public long getNumberPhone() {
-        return numberPhone;
-    }
-
-    public void setNumberPhone(long numberPhone) {
-        this.numberPhone = numberPhone;
-    }
 
     public long getPassport() {
         return passport;
@@ -118,7 +108,6 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
                 ", age=" + age +
-                ", numberPhone=" + numberPhone +
                 ", passport=" + passport +
                 '}';
     }
@@ -128,11 +117,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return age == user.age && numberPhone == user.numberPhone && passport == user.passport && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email);
+        return age == user.age && passport == user.passport && Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(surname, user.surname) && Objects.equals(email, user.email);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, surname, email, age, numberPhone, passport);
+        return Objects.hash(id, name, surname, email, age, passport);
     }
 }

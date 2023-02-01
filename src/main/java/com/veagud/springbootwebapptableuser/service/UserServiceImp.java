@@ -29,7 +29,6 @@ public class UserServiceImp implements UserService {
         userDao.updateUser(user);
     }
 
-
     @Transactional
     @Override
     public void saveUser(User user) {
